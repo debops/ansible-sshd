@@ -3,6 +3,12 @@
 - name: Pre hooks
   include: '{{ lookup("task_src", "sshd/pre_main.yml") }}'
 
+- name: Ensure current user is part of admins group
+  user:
+    name={{ lookup('env', 'USER') }}
+    groups=admins
+    append=yes
+
 - name: Check if OpenSSH is installed (or half-installed)
   script: scripts/dpkg-state openssh-server
   register: sshd__register_prev_pkg_state
