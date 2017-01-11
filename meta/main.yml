@@ -2,6 +2,7 @@
 
 dependencies:
 
+  - role: debops.auth
   - role: debops.secret
 
 galaxy_info:
